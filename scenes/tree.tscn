@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce5tgt4klmk6o"]
+
+[ext_resource type="Texture2D" uid="uid://c1d11wdjnmtoc" path="res://assets/Tree.png" id="1_8rkdm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6swng"]
+atlas = ExtResource("1_8rkdm")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fefb1"]
+atlas = ExtResource("1_8rkdm")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn02k"]
+atlas = ExtResource("1_8rkdm")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jelya"]
+atlas = ExtResource("1_8rkdm")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhrif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6swng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fefb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn02k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jelya")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iw4lx"]
+
+[node name="Tree" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bhrif")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 28)
+shape = SubResource("CircleShape2D_iw4lx")

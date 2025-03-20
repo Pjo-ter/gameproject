@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://db1sa7dvc81kl"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_rn7lg"]
+
+[node name="GameOver" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_rn7lg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -93.0
+offset_right = 202.5
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.14902, 0.14902, 0.372549)
+
+[node name="RestarGameButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.542
+anchor_right = 0.5
+anchor_bottom = 0.59
+offset_left = -55.0
+offset_top = -0.216034
+offset_right = 56.0
+offset_bottom = -0.320007
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Restart game"
+
+[node name="GameOver" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.443
+anchor_right = 0.5
+anchor_bottom = 0.444
+offset_left = -99.0
+offset_top = -33.064
+offset_right = 91.0
+offset_bottom = 15.288
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "Game Over"
+
+[node name="GameOverLabel" type="Label" parent="."]
+offset_left = 424.0
+offset_top = 229.0
+offset_right = 760.0
+offset_bottom = 271.0
+theme_override_font_sizes/font_size = 30
+text = "You survived 0 seconds"
+
+[connection signal="pressed" from="RestarGameButton" to="." method="_on_restar_game_button_pressed"]
