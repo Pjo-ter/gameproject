@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/kill_zone.gd" id="1_ri5y7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sc710"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7muo"]
+size = Vector2(68.4378, 34.3291)
 
 [node name="KillZone" type="Area2D"]
 scale = Vector2(2.9174, 2.5687)
@@ -10,6 +11,7 @@ collision_mask = 2
 script = ExtResource("1_ri5y7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_sc710")
+position = Vector2(45.2458, -6.61813)
+shape = SubResource("RectangleShape2D_a7muo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

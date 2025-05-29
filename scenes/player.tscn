@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ieoqc"]
 [ext_resource type="Texture2D" uid="uid://b55qqlm2hv0cj" path="res://assets/Warrior_Blue.png" id="1_vimuw"]
+[ext_resource type="PackedScene" uid="uid://dg4rj20gw0kp7" path="res://scenes/enemy_kill_zone.tscn" id="3_06t8o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rnup7"]
 atlas = ExtResource("1_vimuw")
@@ -98,7 +99,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,11 +148,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3nbu"]
-size = Vector2(302, 117)
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(9, 10)
+position = Vector2(102, 571)
 collision_layer = 2
 script = ExtResource("1_ieoqc")
 metadata/_edit_group_ = true
@@ -161,19 +159,18 @@ position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_gm2ue")
 animation = &"attack"
 autoplay = "idle"
+frame = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -10)
 polygon = PackedVector2Array(6, -28, 12, -25, 16, -15, 18, -3, 19, 2, 24, 2, 35, -19, 43, -27, 44, -12, 33, 9, 38, 13, 35, 18, 29, 21, 26, 25, 21, 25, 20, 27, 16, 27, 8, 32, -9, 32, -17, 35, -33, 19, -33, -9, -28, -10, -19, -4, -20, -12, -16, -24, -10, -28)
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" parent="." instance=ExtResource("3_06t8o")]
 position = Vector2(0, -10)
-collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(186, -20.5)
-shape = SubResource("RectangleShape2D_f3nbu")
-debug_color = Color(0.819608, 0, 0.141176, 0.4)
+[node name="CollisionShape2D" parent="AttackArea" index="0" groups=["player"]]
+position = Vector2(56.5, -16)
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animation_frame_changed"]
-[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+
+[editable path="AttackArea"]

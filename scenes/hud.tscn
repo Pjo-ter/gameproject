@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://chdv1vfq7xn1o"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_6hbgy"]
+
+[node name="HUD" type="CanvasLayer" groups=["hud"]]
+script = ExtResource("1_6hbgy")
+
+[node name="SurvivalTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ExpBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.006
+anchor_right = 0.209
+anchor_bottom = 0.048
+offset_left = 0.511993
+offset_top = 0.112
+offset_right = 0.231995
+offset_bottom = -0.104
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 28.0
+text = "1"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.054
+anchor_right = 0.17
+anchor_bottom = 0.1
+offset_left = 0.135998
+offset_top = 0.00799942
+offset_right = 0.160004
+offset_bottom = -2.8
+max_value = 10.0
+value = 10.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.059
+anchor_right = 0.023
+anchor_bottom = 0.094
+offset_left = 4.0
+offset_top = -0.232002
+offset_right = 0.503998
+offset_bottom = 0.0879974
+text = "HP:"
+
+[connection signal="timeout" from="SurvivalTimer" to="." method="_on_survival_timer_timeout"]

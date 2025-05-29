@@ -1,8 +1,32 @@
-[gd_scene load_steps=19 format=3 uid="uid://cr8kvo3b0whj"]
+[gd_scene load_steps=26 format=3 uid="uid://cr8kvo3b0whj"]
 
 [ext_resource type="Texture2D" uid="uid://cyc7clpms6vo0" path="res://assets/Torch_Red.png" id="1_6mn26"]
 [ext_resource type="Script" path="res://scripts/enemy_1.gd" id="1_w5d86"]
 [ext_resource type="PackedScene" uid="uid://dl308n07nrlj" path="res://scenes/kill_zone.tscn" id="3_4lf0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ricfs"]
+atlas = ExtResource("1_6mn26")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggcs1"]
+atlas = ExtResource("1_6mn26")
+region = Rect2(192, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auhuh"]
+atlas = ExtResource("1_6mn26")
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l1ys"]
+atlas = ExtResource("1_6mn26")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1d38"]
+atlas = ExtResource("1_6mn26")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anugp"]
+atlas = ExtResource("1_6mn26")
+region = Rect2(960, 384, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jkbg"]
 atlas = ExtResource("1_6mn26")
@@ -60,6 +84,29 @@ region = Rect2(960, 192, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ricfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggcs1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auhuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l1ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1d38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anugp")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1jkbg")
 }, {
 "duration": 1.0,
@@ -109,9 +156,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53lh3"]
-size = Vector2(96, 74)
+size = Vector2(65, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kaden"]
+size = Vector2(71, 106)
 
 [node name="Enemy1" type="CharacterBody2D" groups=["enemies"]]
+position = Vector2(0, -1)
 script = ExtResource("1_w5d86")
 metadata/_edit_group_ = true
 
@@ -119,22 +170,29 @@ metadata/_edit_group_ = true
 position = Vector2(-3, -2)
 scale = Vector2(0.994792, 1)
 sprite_frames = SubResource("SpriteFrames_5nrni")
-animation = &"walk"
+animation = &"attack"
 autoplay = "idle"
-frame = 5
-frame_progress = 0.883501
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-15, -2)
-shape = SubResource("RectangleShape2D_53lh3")
-debug_color = Color(0.965552, 0.0237287, 0.471655, 0.42)
+frame = 3
 
 [node name="KillZone" parent="." instance=ExtResource("3_4lf0t")]
 scale = Vector2(2.49689, 3.51255)
 
 [node name="CollisionShape2D" parent="KillZone" index="0"]
+position = Vector2(48.8608, -4.55509)
 scale = Vector2(1.11188, 0.879066)
+debug_color = Color(0.980005, 0, 0.383323, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, -1)
+shape = SubResource("RectangleShape2D_53lh3")
+debug_color = Color(0.561555, 0.559417, 0, 0.42)
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="PlayerDetectShape" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(62.5, -16)
+shape = SubResource("RectangleShape2D_kaden")
+debug_color = Color(1.15514e-06, 0.643581, 0.297369, 0.42)
 
 [editable path="KillZone"]

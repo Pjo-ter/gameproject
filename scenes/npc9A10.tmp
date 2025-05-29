@@ -1,0 +1,110 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwg08daet02iu"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_quscy"]
+[ext_resource type="Texture2D" uid="uid://cgkj3vnsw1hsu" path="res://assets/Pawn_Purple.png" id="2_kbjfn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhnyi"]
+atlas = ExtResource("2_kbjfn")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6ck2"]
+atlas = ExtResource("2_kbjfn")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnbhi"]
+atlas = ExtResource("2_kbjfn")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iilw7"]
+atlas = ExtResource("2_kbjfn")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nem3"]
+atlas = ExtResource("2_kbjfn")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtcp4"]
+atlas = ExtResource("2_kbjfn")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1ye8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhnyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6ck2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnbhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iilw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nem3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtcp4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4k7f"]
+size = Vector2(18.981, 37.6623)
+
+[node name="npc" type="Node2D"]
+script = ExtResource("1_quscy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_o1ye8")
+animation = &"idle"
+frame_progress = 0.519388
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.52588e-05, 2.5)
+scale = Vector2(8.12719, -1.83207)
+shape = SubResource("RectangleShape2D_x4k7f")
+
+[node name="DialogBox" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="DialogBox"]
+offset_left = -300.0
+offset_top = 145.0
+offset_right = 300.0
+offset_bottom = 245.0
+
+[node name="Label" type="Label" parent="DialogBox/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.005
+anchor_top = 0.01
+anchor_right = 0.993
+anchor_bottom = 0.966
+offset_right = -322.8
+offset_bottom = -22.6
+scale = Vector2(2.19619, 1.30903)
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/Panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 4
+
+[node name="Option1" type="Button" parent="DialogBox/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Option2" type="Button" parent="DialogBox/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Option3" type="Button" parent="DialogBox/Panel/VBoxContainer"]
+layout_mode = 2
