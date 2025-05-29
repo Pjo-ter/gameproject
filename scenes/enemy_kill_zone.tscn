@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg4rj20gw0kp7"]
+
+[ext_resource type="Script" path="res://scripts/enemy_kill_zone.gd" id="1_7irfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8vvi"]
+size = Vector2(63, 116)
+
+[node name="EnemyKillZone" type="Area2D"]
+position = Vector2(-4, 2)
+script = ExtResource("1_7irfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58.2188, -19)
+shape = SubResource("RectangleShape2D_e8vvi")
+debug_color = Color(0, 0.14902, 0.380392, 0.431373)

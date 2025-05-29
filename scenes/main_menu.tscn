@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyh7o2oxs2kn"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_krx8y"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchor_right = 0.142
+anchor_bottom = 0.082
+offset_right = -163.584
+offset_bottom = -53.136
+script = ExtResource("1_krx8y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 155.0
+offset_bottom = 23.0
+text = "Opowieści z Gruzów"
+
+[node name="ButtonStart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 37.0
+offset_right = 110.0
+offset_bottom = 68.0
+text = "Start"
+
+[node name="ButtonExit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 79.0
+offset_right = 105.0
+offset_bottom = 110.0
+text = "Exit"
